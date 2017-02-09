@@ -1,3 +1,4 @@
+require 'pry'
 module Api
   module V1
     class CocktailsController < ApplicationController
@@ -10,7 +11,8 @@ module Api
       end
 
       def create
-        
+        @cocktail = Cocktail.create(name: params[:cocktail][:name], description: params[:cocktail][:description], instructions: params[:cocktail][:instructions], source: params[:cocktail][:source])
+        render json: @cocktail
       end
 
       def edit
